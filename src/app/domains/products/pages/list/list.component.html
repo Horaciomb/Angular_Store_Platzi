@@ -1,8 +1,11 @@
 <div class="grid grid-cols-3">
-    <app-product/>
-    <app-product/>
-    <app-product/>
-    <app-product/>
-    <app-product/>
-    <app-product/>
+  @for (item of [1,2,3,4,5]; track $index) {
+
+  <app-product
+    [title]="'Producto ' + item"
+    [precio]="200 * item"
+    [img]="'https://picsum.photos/640/640?r=23' + item"
+  />
+
+  }
 </div>
