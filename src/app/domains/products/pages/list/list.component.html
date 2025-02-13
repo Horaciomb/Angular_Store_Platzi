@@ -5,6 +5,7 @@
     [title]="'Producto ' + item"
     [precio]="200 * item"
     [img]="'https://picsum.photos/640/640?r=23' + item"
+    (addCart)="fromChild($event)"
   />
 
   }
