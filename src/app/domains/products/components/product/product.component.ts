@@ -8,7 +8,7 @@ import { Component, Input } from '@angular/core';
 })
 export class ProductComponent {
   // img ='https://picsum.photos/640/640?r='+Math.random()
-  @Input() img: string = '';
-  @Input() precio: number = 0;
-  @Input() title: string = '';
+  @Input({required:true}) img: string = '';
+  @Input({required:true}) precio: number = 0;
+  @Input({required:true}) title: string = '';
 }
