@@ -1,6 +1,5 @@
 import { Component, Input, signal, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { repeat } from 'rxjs';
 
 @Component({
   selector: 'app-counter',
