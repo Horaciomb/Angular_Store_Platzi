@@ -1,3 +1,11 @@
 <div>
   <div #wave></div>
+  <button class="border-amber-600" (click)="playPause()" title="Play/Pause">
+    @if(isPlaying()){
+        <span>Pause</span>
+    }
+    @else {
+        <span>Play</span>
+    }
+  </button>
 </div>
