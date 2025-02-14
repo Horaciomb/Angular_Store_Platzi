@@ -17,12 +17,34 @@ export class CounterComponent {
     // this.duration = 12;
     // Before render
     console.log('contructor');
-    console.log('-', repeat(10));
+    console.log('----------');
   }
   ngOnChanges(changes: SimpleChanges) {
     // before and during render
     console.log('ngOnChanges');
-    console.log('-', repeat(10));
+    console.log('----------');
     console.log(changes);
+  }
+
+  ngOnInit() {
+    // after render
+    // una sola vez
+    // para asincronos, then , subs
+    console.log('ngOnInit');
+    console.log('----------');
+    console.log('duration =>', this.duration);
+    console.log('message =>', this.message);
+  }
+
+  ngAfterViewInit() {
+    // after Render
+    // es para cuandos los hijos de este ya fueron renderizados
+    console.log('ngAfterViewInit');
+    console.log('----------');
+  }
+
+  ngOnDestroy() {
+    console.log('ngOnDestroy');
+    console.log('----------');
   }
 }
