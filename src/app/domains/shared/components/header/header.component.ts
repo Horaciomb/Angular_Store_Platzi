@@ -10,9 +10,12 @@ import { Product } from '../../models/product.model';
 export class HeaderComponent {
   @Input({required:true}) cart: Product[] = [];
   hideSideMenu = signal(true);
-
+  currency=signal('Bs.')
   toggleSideMenu() {
     this.hideSideMenu.update((value) => !value);
     console.log('Estado actual:', this.hideSideMenu());
+  }
+  getTotalPrice() {
+    return this.cart.reduce((total, product) => total + product.price, 0);
   }
 }
