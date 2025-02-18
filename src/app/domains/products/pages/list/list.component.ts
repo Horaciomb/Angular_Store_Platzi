@@ -2,7 +2,7 @@ import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProductComponent } from '../../../products/components/product/product.component';
 import { Product } from '../../../shared/models/product.model';
-import { HeaderComponent } from "../../../shared/components/header/header.component";
+import { HeaderComponent } from '../../../shared/components/header/header.component';
 @Component({
   selector: 'app-list',
   imports: [CommonModule, ProductComponent, HeaderComponent],
@@ -11,6 +11,7 @@ import { HeaderComponent } from "../../../shared/components/header/header.compon
 })
 export class ListComponent {
   products = signal<Product[]>([]);
+  cart = signal<Product[]>([]);
   constructor() {
     const initProducts: Product[] = [
       {
@@ -18,48 +19,47 @@ export class ListComponent {
         title: 'Producto 1',
         price: 100,
         image: 'https://picsum.photos/640/640?r=23',
-        creationAt:new Date().toISOString(),
+        creationAt: new Date().toISOString(),
       },
       {
         id: Date.now(),
         title: 'Producto 2',
         price: 200,
         image: 'https://picsum.photos/640/640?r=22',
-        creationAt:new Date().toISOString(),
+        creationAt: new Date().toISOString(),
       },
       {
         id: Date.now(),
         title: 'Producto 3',
         price: 300,
         image: 'https://picsum.photos/640/640?r=24',
-        creationAt:new Date().toISOString(),
+        creationAt: new Date().toISOString(),
       },
       {
         id: Date.now(),
         title: 'Producto 4',
         price: 400,
         image: 'https://picsum.photos/640/640?r=25',
-        creationAt:new Date().toISOString(),
+        creationAt: new Date().toISOString(),
       },
       {
         id: Date.now(),
         title: 'Producto 5',
         price: 500,
         image: 'https://picsum.photos/640/640?r=26',
-        creationAt:new Date().toISOString(),
+        creationAt: new Date().toISOString(),
       },
       {
         id: Date.now(),
         title: 'Producto 6',
         price: 600,
         image: 'https://picsum.photos/640/640?r=27',
-        creationAt:new Date().toISOString(),
+        creationAt: new Date().toISOString(),
       },
     ];
     this.products.set(initProducts);
   }
-  fromChild(event: string) {
-    console.log('Estamos en el padre');
-    console.log(event);
+  addToCart(product: Product) {
+    this.cart.update((prevState) => [...prevState, product]);
   }
 }
