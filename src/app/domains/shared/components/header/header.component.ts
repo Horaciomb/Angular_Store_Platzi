@@ -1,4 +1,10 @@
-import { Component, Input, signal } from '@angular/core';
+import {
+  Component,
+  Input,
+  signal,
+  SimpleChange,
+  SimpleChanges,
+} from '@angular/core';
 import { Product } from '../../models/product.model';
 
 @Component({
@@ -8,9 +14,15 @@ import { Product } from '../../models/product.model';
   styleUrl: './header.component.css',
 })
 export class HeaderComponent {
-  @Input({required:true}) cart: Product[] = [];
+  @Input({ required: true }) cart: Product[] = [];
   hideSideMenu = signal(true);
-  currency=signal('Bs.')
+  total = signal(0);
+  ngOnChanges(changes: SimpleChanges) {
+    const cart = changes['cart'];
+    if (cart) {
+      this.total.set(this.getTotalPrice());
+    }
+  }
   toggleSideMenu() {
     this.hideSideMenu.update((value) => !value);
     console.log('Estado actual:', this.hideSideMenu());
