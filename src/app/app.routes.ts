@@ -2,25 +2,31 @@ import { Routes } from '@angular/router';
 import { LayoutComponent } from '@shared/components/layout/layout.component';
 export const routes: Routes = [
   {
-    path:'',
+    path: '',
     component: LayoutComponent,
-    children:[
+    children: [
       {
         path: '',
-        loadComponent: ()=>import('./domains/products/pages/list/list.component'),
+        loadComponent: () =>
+          import('./domains/products/pages/list/list.component'),
       },
       {
         path: 'about',
-        loadComponent:()=>import('./domains/info/pages/about/about.component'),
+        loadComponent: () =>
+          import('./domains/info/pages/about/about.component'),
       },
       {
         path: 'product/:id',
-        loadComponent:()=>import('./domains/products/pages/product-detail/product-detail.component'),
+        loadComponent: () =>
+          import(
+            './domains/products/pages/product-detail/product-detail.component'
+          ),
       },
-    ]
+    ],
   },
   {
     path: '**',
-    loadComponent:()=>import('./domains/info/pages/not-found/not-found.component'),
-  }
+    loadComponent: () =>
+      import('./domains/info/pages/not-found/not-found.component'),
+  },
 ];
