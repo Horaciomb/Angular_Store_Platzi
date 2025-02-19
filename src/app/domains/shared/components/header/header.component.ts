@@ -6,11 +6,12 @@ import {
   SimpleChange,
   SimpleChanges,
 } from '@angular/core';
+import { RouterLinkWithHref } from '@angular/router';
 import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-header',
-  imports: [],
+  imports: [RouterLinkWithHref],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
 })
