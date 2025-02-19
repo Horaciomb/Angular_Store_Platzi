@@ -1,17 +1,14 @@
 import {
   Component,
   inject,
-  Input,
   signal,
-  SimpleChange,
-  SimpleChanges,
 } from '@angular/core';
-import { RouterLinkWithHref } from '@angular/router';
+import { RouterLinkWithHref, RouterLinkActive } from '@angular/router';
 import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-header',
-  imports: [RouterLinkWithHref],
+  imports: [RouterLinkWithHref,RouterLinkActive],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
 })
