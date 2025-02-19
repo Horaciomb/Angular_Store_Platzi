@@ -11,6 +11,7 @@ import { CommonModule } from '@angular/common';
 export class ProductDetailComponent {
   private productService = inject(ProductService);
   product = signal<Product | null>(null);
+  cover = signal('');
   @Input() id?: string;
 
   ngOnInit() {
@@ -18,8 +19,14 @@ export class ProductDetailComponent {
       this.productService.getOne(this.id).subscribe({
         next: (product) => {
           this.product.set(product);
+          if (product.images.length > 0) {
+            this.cover.set(product.images[0]);
+          }
         },
       });
     }
+  }
+  changeCover(newImg:string){
+    this.cover.set(newImg);
   }
 }
